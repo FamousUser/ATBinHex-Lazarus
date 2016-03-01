@@ -2484,7 +2484,11 @@ end;
 
 procedure TATBinHex.Paint;
 begin
-  Canvas.Draw(0, 0, FBitmap);
+  // under Lazarus, Paint is called even if not visible
+  //Canvas.Draw(0, 0, FBitmap);
+  // =>  
+  if Self.Visible then Canvas.Draw(0, 0, FBitmap);
+  
   DrawNiceScroll;
 end;
 
